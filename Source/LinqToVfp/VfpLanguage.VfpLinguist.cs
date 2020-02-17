@@ -67,6 +67,8 @@ namespace LinqToVfp {
                 expression = VfpCrossJoinIsolator.Isolate(expression);
                 expression = ConditionalImmediateIfNullRemover.Remove(expression);
                 expression = XmlToCursorJoinRewriter.Rewrite(expression);
+                //Take Needs an Order By
+                expression = TakeRewriter(expression);
 
                 return expression;
             }
